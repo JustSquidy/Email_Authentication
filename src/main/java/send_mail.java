@@ -7,7 +7,7 @@ public class send_mail {
 
         //Define email details
         String to_email = "accesspointproject106@gmail.com";   // THIS LINE NEEDS TO BE IMPLEMENTED WITH THE NEW USER'S EMAIL FROM THE CREATE ACCOUNT FUNCTION. FOR EXAMPLE user.getemail() from_email the login database
-        String from_email = "accesspointproject106@gmail.com";
+        String from_email = "accesspointproject106@gmail.com"; // This is an email I setup. This is where the emails will be sent out from
         String password = System.getenv("EMAIL_PASSWORD");// A system environment variable will need to_email be created so that the gmail sending out messages can only be sent out by us. (I will post the key in a chat whenever we discuss this)
 
         int verification_code = (int)(Math.random()* 900000) + 100000; // Creates a random 6-digit token to be used for activation after the user registration that will need to be coded into registration program.
