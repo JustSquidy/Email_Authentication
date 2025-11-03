@@ -13,26 +13,12 @@ public class UserEmailService {
 
     public UserEmailService() {
         // Replace with your MongoDB connection string if different
-        this.mongoClient = MongoClients.create("mongodb://localhost:27017");
+        this.mongoClient = MongoClients.create("mongodb+srv://Javier2025:AC25@cluster0.rmboum5.mongodb.net/");
         this.database = mongoClient.getDatabase("USER_DATA");
         this.userCollection = database.getCollection("users");
     }
 
-    // Get all user emails
-    public List<String> getAllUserEmails() {
-        List<String> emails = new ArrayList<>();
-        userCollection.find()
-                     .projection(new Document("email", 1).append("_id", 0))
-                     .forEach(doc -> {
-                         String email = doc.getString("email");
-                         if (email != null) {
-                             emails.add(email);
-                         }
-                     });
-        return emails;
-    }
-
-    // Get emails of unverified users
+    // Get emails of unverified users only
     public List<String> getUnverifiedUserEmails() {
         List<String> emails = new ArrayList<>();
         userCollection.find(new Document("email_verified", false))
@@ -44,13 +30,6 @@ public class UserEmailService {
                          }
                      });
         return emails;
-    }
-
-    // Get a single user's email by username
-    public String getUserEmail(String username) {
-        Document user = userCollection.find(new Document("username", username))
-                                    .first();
-        return user != null ? user.getString("email") : null;
     }
 
     // Close the MongoDB connection when done
