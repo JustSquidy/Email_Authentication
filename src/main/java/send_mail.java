@@ -6,7 +6,7 @@ public class send_mail {
     public static void main(String[] args) {
 
         //Define email details
-        String to_email = "accesspointproject106@gmail.com";   // THIS LINE NEEDS TO BE IMPLEMENTED WITH THE NEW USER'S EMAIL FROM THE CREATE ACCOUNT FUNCTION. FOR EXAMPLE user.getemail() from_email the login database
+        String to_email = "J4vierR3yes11@gmail.com";   // THIS LINE NEEDS TO BE IMPLEMENTED WITH THE NEW USER'S EMAIL FROM THE CREATE ACCOUNT FUNCTION. FOR EXAMPLE user.getemail() from_email the login database
         String from_email = "accesspointproject106@gmail.com"; // This is an email I setup. This is where the emails will be sent out from
         String password = System.getenv("EMAIL_PASSWORD");// A system environment variable will need to_email be created so that the gmail sending out messages can only be sent out by us. (I will post the key in a chat whenever we discuss this)
 
