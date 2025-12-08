@@ -32,7 +32,7 @@ public class UserEmailService {
         return emails;
     }
 
-    // Close the MongoDB connection when done
+    // Close the MongoDB connection when done yesah
     public void close() {
         if (mongoClient != null) {
             mongoClient.close();
