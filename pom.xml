@@ -15,6 +15,13 @@
     </properties>
 
     <dependencies>
+        <!-- MongoDB Java -->
+        <dependency>
+            <groupId>org.mongodb</groupId>
+            <artifactId>mongodb-driver-sync</artifactId>
+            <version>4.11.0</version>
+        </dependency>
+
         <!-- Jakarta Mail extension -->
         <dependency>
             <groupId>com.sun.mail</groupId>

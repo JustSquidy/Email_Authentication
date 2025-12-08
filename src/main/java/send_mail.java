@@ -1,18 +1,23 @@
 import jakarta.mail.*;
 import jakarta.mail.internet.*;
 import java.util.Properties;
+import java.util.List;
 
 public class send_mail {
     public static void main(String[] args) {
 
-        //Define email details
-        String to_email = "accesspointproject106@gmail.com";   // THIS LINE NEEDS TO BE IMPLEMENTED WITH THE NEW USER'S EMAIL FROM THE CREATE ACCOUNT FUNCTION. FOR EXAMPLE user.getemail() from_email the login database
+        // Create email service and get unverified emails
+        UserEmailService emailService = new UserEmailService();
+        List<String> unverifiedEmails = emailService.getUnverifiedUserEmails();
+
+        // Define email details
         String from_email = "accesspointproject106@gmail.com"; // This is an email I setup. This is where the emails will be sent out from
-        String password = System.getenv("EMAIL_PASSWORD");// A system environment variable will need to_email be created so that the gmail sending out messages can only be sent out by us. (I will post the key in a chat whenever we discuss this)
+        String password = System.getenv("EMAIL_PASSWORD");// A system environment variable will need to be created so that the gmail sending out messages can only be sent out by us.
+
+        // Process each unverified email
+        for (String to_email : unverifiedEmails) {
 
         int verification_code = (int)(Math.random()* 900000) + 100000; // Creates a random 6-digit token to be used for activation after the user registration that will need to be coded into registration program.
-
-
 
         // Set mail server using gmail's SMTP. Side things like security and authentication of the email and password from_email previous lines
         Properties props = new Properties();
@@ -52,5 +57,8 @@ public class send_mail {
         } catch (MessagingException e) {
             e.printStackTrace();
         } // gives error information
+        }
+        // Don't forget to close the MongoDB connection
+        emailService.close();
     }
 }
